@@ -1,0 +1,61 @@
+---
+// Component Imports
+import Layout from '../../layouts/Page.astro'
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+
+import { getAllPosts } from '../../lib/api.js';
+import Container from '../../components/Container.astro';
+
+
+const seo = {
+  title: 'Example Blog',
+  description: 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.'
+}
+
+const allPostData = await getAllPosts();
+
+---
+
+<Layout seo={seo}>
+  <Container>
+    <article class="blog-page-content__article">
+      <section class="postlist">
+        {allPostData.map((post) =>
+        <BlogPostPreview post={post} />)}
+      </section>
+    </article>
+  </Container>
+</Layout>
+
+<style is:global>
+  /* Posts list */
+  .postlist {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+
+  }
+
+  .postlist-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .postlist-item__img {
+    border-radius: 0.5rem;
+    height: auto;
+  }
+
+  @media screen and (max-width: 769px) {
+    .blog-page-content__article {
+      padding: 1rem;
+    }
+
+    .postlist {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
