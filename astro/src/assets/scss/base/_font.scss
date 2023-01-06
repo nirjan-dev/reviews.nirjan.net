@@ -18,15 +18,13 @@ body {
   @include size-16;
 
   a {
-    color: var(--action-color);
 
-    &:visited {
-      color: var(--action-color);
-    }
+
+    
 
     &:hover,
     &:focus {
-      color: var(--action-color);
+      color: rebeccapurple;
       text-decoration: none;
     }
   }

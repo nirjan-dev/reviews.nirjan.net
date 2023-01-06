@@ -1,12 +1,12 @@
 ---
 import ResponsiveToggle from "./ResponsiveToggle.astro";
-import { DarkMode } from "accessible-astro-components";
 ---
 
 <div id="main-navigation" class="is-desktop padding-16 color-neutral">
   <div class="container">
     <a href="/">
       <img
+        class="h-10"
         src={(await import("../assets/img/logo.svg")).default}
         alt="Your Logo"
       />
@@ -17,7 +17,6 @@ import { DarkMode } from "accessible-astro-components";
           <slot />
         </ul>
       </nav>
-      <DarkMode />
       <ResponsiveToggle />
     </div>
     <nav class="mobile-menu">
@@ -225,6 +224,7 @@ import { DarkMode } from "accessible-astro-components";
 
   #main-navigation {
     > .container {
+      padding: 0 1rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -359,42 +359,6 @@ import { DarkMode } from "accessible-astro-components";
         border: 2px solid black;
         @include elevation-300;
         @include radius-small;
-      }
-    }
-  }
-
-  .darkmode-toggle {
-    padding: 0;
-    border: none;
-
-    svg {
-      width: 30px;
-    }
-
-    svg path {
-      fill: var(--secondary-500);
-      transition: fill 0.2s ease-in-out;
-    }
-
-    &:hover {
-      svg path {
-        fill: var(--primary-400);
-      }
-    }
-
-    &:focus {
-      @include outline;
-    }
-  }
-
-  .darkmode .darkmode-toggle {
-    svg path {
-      fill: var(--secondary-100);
-    }
-
-    &:hover {
-      svg path {
-        fill: var(--primary-400);
       }
     }
   }

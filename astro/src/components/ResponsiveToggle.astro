@@ -7,11 +7,11 @@
     width="26"
     height="19"
     aria-hidden="true"
-    fill="var(--action-color)"
+    fill="black"
     xmlns="http://www.w3.org/2000/svg"
     ><path
       d="M2 1.667h24m-24 8h24m-24 8h24"
-      stroke="var(--action-color)"
+      stroke="black"
       stroke-width="2.667"
       stroke-linecap="round"
       stroke-linejoin="round"></path>
@@ -26,13 +26,13 @@
   const openMenu = (toggle) => {
     toggle.setAttribute("aria-expanded", true);
     toggle.setAttribute("aria-label", "Close menu navigation");
-    toggle.innerHTML = `<svg width="20" height="20" aria-hidden="true" fill="var(--action-color)" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 2 2m8 8 8 8m-8-8 8-8m-8 8-8 8" stroke="var(--action-color)" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    toggle.innerHTML = `<svg width="20" height="20" aria-hidden="true" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 2 2m8 8 8 8m-8-8 8-8m-8 8-8 8" stroke="black" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   };
 
   const closeMenu = (toggle) => {
     toggle.setAttribute("aria-expanded", false);
     toggle.setAttribute("aria-label", "Open menu navigation");
-    toggle.innerHTML = `<svg width="26" height="19" aria-hidden="true" fill="var(--action-color)" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.667h24m-24 8h24m-24 8h24" stroke="var(--action-color)" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    toggle.innerHTML = `<svg width="26" height="19" aria-hidden="true" fill="black" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.667h24m-24 8h24m-24 8h24" stroke="black" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   };
 
   // execution
