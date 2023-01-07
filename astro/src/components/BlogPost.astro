@@ -1,7 +1,7 @@
 ---
-import SanityPortableText from './SanityPortableText.astro'
-import { getSanityImageURL, formatBlogPostDate } from '../utils/helpers.js'
-import Container from './Container.astro';
+import SanityPortableText from "./SanityPortableText.astro";
+import { getSanityImageURL, formatBlogPostDate } from "../utils/helpers.js";
+import Container from "./Container.astro";
 
 export interface Props {
   post: any;
@@ -13,22 +13,75 @@ const { post } = Astro.props;
 
 <Container>
   <article class="post-content__article">
-      {post.mainImage && <img width="720" height="420" class="post-main__img" loading="lazy" src={getSanityImageURL(post.mainImage).url()} />}
-      <h1>{post.title}</h1>
-      <time>{formatBlogPostDate(post.publishedAt)}</time>
-      {post.author && <p>By {post.author.name}</p>}
+    {
+      post.categoryData && (
+        <ul class="mb-4">
+          {post.categoryData.map((category) => (
+            <li>
+              <a
+                class="uppercase border-2  border-gray-300 text-gray-600 rounded-3xl text-xs px-3 py-1"
+                href={`/blog/category/${category.slug.current}`}
+              >
+                {category.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      post.mainImage && (
+        <img
+          width="720"
+          height="420"
+          class="post-main__img"
+          loading="lazy"
+          src={getSanityImageURL(post.mainImage).url()}
+        />
+      )
+    }
+    <h1 class="text-black lg:text-8xl">{post.title}</h1>
+    <time class="text-gray-800 text-sm"
+      >{formatBlogPostDate(post.publishedAt)}
+    </time>
+
+    <div class="max-w-4xl lg:text-xl my-6 post">
       <SanityPortableText portableText={post.body} />
+
+      <p class="text-black font-bold text-2xl">Rating: {post.rating} / 5</p>
+    </div>
   </article>
+
+  <a
+    href={`/blog/${post.type}`}
+    class="bg-black text-white py-2 mr-6 px-6 text-lg mb-6 inline-block"
+    >All <span class="capitalize">{post.type}</span> Posts</a
+  >
+
+  <a
+    href="/blog"
+    class="border-2 border-black py-2 px-6 text-lg mb-6 inline-block"
+    >All Posts →</a
+  >
 </Container>
 
-<style>
+<style lang="scss" is:global>
   .post-content__article {
     padding: 1rem;
+
+    .post {
+      p {
+        margin: 2rem 0;
+      }
+    }
   }
 
   .post-main__img {
-    width: 100%;
+    width: auto;
+    max-height: 600px;
+    object-fit: contain;
     height: auto;
+    float: right;
+    margin: 0 0 1rem 1rem;
   }
 </style>
-

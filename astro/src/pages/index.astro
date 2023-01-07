@@ -1,18 +1,68 @@
 ---
 import Layout from "../layouts/Page.astro";
 import Container from "../components/Container.astro";
+import { getRecentPosts } from "../lib/api";
 
 const seo = {
-  title: "Astro Minimal Starter",
+  title: "Nirjan's Reviews",
   description:
-    "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.",
+    "Are you a fan of movies, books, and music? Looking for reliable and personal recommendations? Look no further!This review site is run by a single passionate enthusiast, bringing you honest and informed reviews of the latest releases. From blockbuster films to indie albums, we've got you covered. Follow us for unique, personal recommendations and discover your next favorite piece of media.",
 };
+
+const allPostData = await getRecentPosts();
 ---
 
 <Layout seo={seo}>
   <Container>
-    <h1 class="text-black text-2xl">Astro Sanity Minimal Starter</h1>
+    <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">
+      Welcome to Nirjan's Reviews
+    </h1>
+    <p class="max-w-4xl lg:text-2xl">
+      Here, I share my thoughts and opinions on the movies, music, and books
+      that I consume. As an avid reader, music lover, and film enthusiast, I
+      have a lot to say about the entertainment that I enjoy. I hope that my
+      reviews will give you a sense of my taste and help you discover new things
+      to watch, listen to, and read. So grab a snack and join me on this journey
+      of exploring the best that the world of entertainment has to offer. If you
+      wanna know more about me, check out my <a class="underline" href="/about"
+        >bio here</a
+      >.
+    </p>
 
-    <a href="/blog">Blog →</a>
+    <h2 class="text-black lg:text-6xl lg:mt-32 mt-12">Latest Posts</h2>
+
+    <section class="flex lg:mt-16 mt-6 mb-4">
+      <ul class="flex flex-col">
+        {
+          allPostData.map((post) => (
+            <li class="lg:mb-12 mb-10">
+              <a href={`/blog/${post.slug.current}`}>
+                <h3 class="text-black flex justify-start items-center">
+                  {post.title}{" "}
+                  <span class="uppercase border-2 ml-2 border-gray-300 text-gray-600 rounded-3xl text-xs px-3 py-1">
+                    {post.type}
+                  </span>
+                </h3>
+              </a>
+              <p class="text-gray-500">{post.date}</p>
+              <p />
+              <p class="my-4 max-w-lg">{post.excerpt}</p>
+              <a
+                class="border-2 border-black py-2 px-3"
+                href={`/blog/${post.slug.current}`}
+              >
+                Read More
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <a
+      href="/blog"
+      class="bg-black text-white py-2 px-6 text-lg mb-6 inline-block"
+      >All Posts →</a
+    >
   </Container>
 </Layout>

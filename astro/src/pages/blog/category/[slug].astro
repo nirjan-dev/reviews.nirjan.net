@@ -1,26 +1,30 @@
 ---
 // Component Imports
-import Layout from '../../../layouts/Page.astro'
-import BlogPostPreview from '../../../components/BlogPostPreview.astro'
+import Layout from "../../../layouts/Page.astro";
+import BlogPostPreview from "../../../components/BlogPostPreview.astro";
 
-import { getAllCategoriesWithPosts } from '../../../lib/api.js';
+import { getAllCategoriesWithPosts } from "../../../lib/api.js";
+import Container from "../../../components/Container.astro";
 
 export async function getStaticPaths() {
   const allCategoryData = await getAllCategoriesWithPosts();
 
-  return allCategoryData.map(category => ({params: { slug: category.slug.current }, props: {category}}));
+  return allCategoryData.map((category) => ({
+    params: { slug: category.slug.current },
+    props: { category },
+  }));
 }
 
 const { category } = Astro.props;
 
 const seo = {
   title: category.title,
-}
+};
 ---
 
-<Layout seo={seo} >
-    <h1>All Posts Tagged with "{category.title}"</h1>
-    {category.posts.map((post) => (
-       <BlogPostPreview post={post} />
-    ))}
+<Layout seo={seo}>
+  <Container>
+    <h1 class="mb-8">All Posts Tagged with "{category.title}"</h1>
+    {category.posts.map((post) => <BlogPostPreview post={post} />)}
+  </Container>
 </Layout>

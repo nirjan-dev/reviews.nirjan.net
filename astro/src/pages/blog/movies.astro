@@ -3,21 +3,22 @@
 import Layout from "../../layouts/Page.astro";
 import BlogPostPreview from "../../components/BlogPostPreview.astro";
 
-import { getAllPosts } from "../../lib/api.js";
+import { getAllMoviesPosts } from "../../lib/api.js";
 import Container from "../../components/Container.astro";
 
 const seo = {
-  title: "Example Blog",
+  title: "Nirjan's Reviews | Movie Reviews",
   description:
-    "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.",
+    "Get the scoop on the latest films with my movie reviewers! My reviews are honest, in-depth, and unbiased, giving you a true sense of what to expect from each film. From blockbuster hits to indie darlings, I cover a wide range of movies to appeal to every film fan.",
 };
 
-const allPostData = await getAllPosts();
+const allPostData = await getAllMoviesPosts();
 ---
 
 <Layout seo={seo}>
   <Container>
-    <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">All Reviews</h1>
+    <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">Movie Reviews</h1>
+
     <article class="blog-page-content__article">
       <section class="postlist">
         {allPostData.map((post) => <BlogPostPreview post={post} />)}

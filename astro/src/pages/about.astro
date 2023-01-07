@@ -4,14 +4,65 @@ import Container from "../components/Container.astro";
 
 const seo = {
   title: "About Me | Nirjan's Reviews",
-  description: "I'm Nirjan",
+  description:
+    "Hello! My name is Nirjan Khadka and I am a cinephile, bookworm, and hiphop junkie. ",
 };
 ---
 
 <Layout seo={seo}>
   <Container>
-    <h1 class="text-black text-2xl">About Me</h1>
+    <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">About Me</h1>
 
-    <p>I'm Nirjan, I like movies.</p>
+    <p class="max-w-4xl lg:text-2xl">
+      Hello! My name is Nirjan Khadka and I am a cinephile, bookworm, and hiphop
+      junkie. Some of my favourite filmmakers include Paul Thomas Anderson,
+      Martin McDonough, Park Chan-Wook, and Wong Kar Wai. Some of my favourite
+      films include Mary and Max, Punch Drunk Love, Persepolis, and The
+      Apartment. In terms of music, my favourite albums include My Beautiful
+      Dark Twisted Fantasy, 2014 Forest Hill Drive, The Book of Ryan, The
+      College Dropout, and The Eminem Show. I am also a big reader and some of
+      my favourite books include Circe, 100 Years of Solitude, Norwegian Wood,
+      Watchmen, and Persopolis. On a personal level, I have a dark sense of
+      humour, am a hopeless romantic, and an eternal optimist. I am also an
+      introvert and a bit of a nerd. I am known to be a serial procrastinator
+      and an overthinker, and I self-diagnose myself with ADHD. You can follow
+      me on these platforms too:
+    </p>
+
+    <ul class="pl-0 mt-12">
+      <li>
+        <a
+          class="underline text-lg mb-3 inline-block"
+          href="https://app.thestorygraph.com/profile/nk13"
+        >
+          Storygraph</a
+        >
+      </li>
+      <li>
+        <a
+          class="underline text-lg mb-3 inline-block"
+          href="https://letterboxd.com/nk13_codes"
+        >
+          Letterboxd</a
+        >
+      </li>
+      <li>
+        <a
+          class="underline text-lg mb-3 inline-block"
+          href="https://musicboard.app/nk13/"
+        >
+          MusicBoard</a
+        >
+      </li>
+
+      <li>
+        <a
+          class="underline text-lg mb-3 inline-block"
+          href="https://www.instagram.com/nirjan13/"
+        >
+          Instagram</a
+        >
+      </li>
+    </ul>
   </Container>
 </Layout>
