@@ -3,16 +3,10 @@ import Layout from "../layouts/Page.astro";
 import Container from "../components/Container.astro";
 import { getRecentPosts } from "../lib/api";
 
-const seo = {
-  title: "Nirjan's Reviews",
-  description:
-    "Are you a fan of movies, books, and music? Looking for reliable and personal recommendations? Look no further!This review site is run by a single passionate enthusiast, bringing you honest and informed reviews of the latest releases. From blockbuster films to indie albums, we've got you covered. Follow us for unique, personal recommendations and discover your next favorite piece of media.",
-};
-
 const allPostData = await getRecentPosts();
 ---
 
-<Layout seo={seo}>
+<Layout>
   <Container>
     <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">
       Welcome to Nirjan's Reviews

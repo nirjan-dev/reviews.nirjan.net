@@ -1,13 +1,12 @@
 export default {
-    title: `Astro Sanity Minimal Starter`,
-    description: `This is an example blog made with Astro.`,
-    url: `https://astro-sanity-minimal-starter.netlify.app`, // No trailing slash!
-    // JSON LD
-    name: `Example`,
-    // Facebook URL
-    facebookURL: `https://facebook.com`,
-    // Twitter URL
-    twitterURL: `https://twitter.com/jaydanurwin`,
-    // Instagram URL
-    instagramURL: `https://instagram.com/jaydanurwin`,
-}
+  title: `Nirjan's Reviews  | Movies, Books, and Music`,
+  description: `Fan of movies, books, and music? Looking for reliable and personal recommendations? Look no further! This review site is run by a single passionate enthusiast, bringing you honest and informed reviews of the latest releases.`,
+  url: `reviews.nirjan.net`, // No trailing slash!
+  // JSON LD
+  name: `Nirjan's Reviews`,
+
+  // Twitter URL
+  twitterURL: `https://twitter.com/nirjan-dev`,
+  // Instagram URL
+  instagramURL: `https://instagram.com/nirjan.dev`,
+};
