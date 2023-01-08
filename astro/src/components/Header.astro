@@ -6,6 +6,7 @@ import { SkipLinks } from "accessible-astro-components";
 <header>
   <SkipLinks />
   <Navigation>
+    <!-- menu-item classes used for interactivity DO NOT CHANGE!  -->
     <li class="menu-item">
       <a href="/">Home</a>
     </li>
@@ -31,24 +32,3 @@ import { SkipLinks } from "accessible-astro-components";
     </li>
   </Navigation>
 </header>
-
-<style lang="scss">
-  @use "../assets/scss/base/breakpoint" as *;
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-
-    @include breakpoint(medium) {
-      flex-wrap: nowrap;
-    }
-
-    img {
-      max-height: 40px;
-    }
-  }
-</style>

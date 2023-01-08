@@ -2,16 +2,16 @@
 import ResponsiveToggle from "./ResponsiveToggle.astro";
 ---
 
-<div id="main-navigation" class="is-desktop padding-16 color-neutral">
-  <div class="container">
+<div id="main-navigation" class="is-desktop py-6 px-4">
+  <div class="container flex justify-between flex-wrap">
     <a href="/">
       <img
         class="lg:h-10 h-6"
         src={(await import("../assets/img/logo.svg")).default}
-        alt="Your Logo"
+        alt="Nirjan's Reviews"
       />
     </a>
-    <div class="wrapper">
+    <div class="flex items-center gap-4">
       <nav class="desktop-menu">
         <ul>
           <slot />
@@ -216,150 +216,92 @@ import ResponsiveToggle from "./ResponsiveToggle.astro";
 </script>
 
 <style lang="scss" is:global>
-  @use "../assets/scss/base/border" as *;
-  @use "../assets/scss/base/breakpoint" as *;
-  @use "../assets/scss/base/elevation" as *;
-  @use "../assets/scss/base/outline" as *;
-  @use "../assets/scss/base/size" as *;
-
   #main-navigation {
-    > .container {
-      padding: 0 1rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
     &.is-desktop {
       .desktop-menu {
-        visibility: visible;
-        position: static;
+        @apply visible static;
       }
 
       .mobile-menu {
-        display: none;
-      }
-
-      .darkmode-toggle {
-        margin-top: -6px;
+        @apply hidden;
       }
     }
 
     &.is-mobile {
-      flex-direction: column;
+      @apply flex-col;
 
       .mobile-menu {
-        display: none;
+        @apply hidden;
 
         &.show {
-          display: block;
+          @apply block;
         }
       }
 
       .desktop-menu {
-        visibility: hidden;
-        z-index: -99;
-        position: absolute;
-        left: 0;
+        @apply invisible -z-50 absolute left-0;
       }
 
       .responsive-toggle {
-        display: block;
+        @apply block;
       }
-    }
-
-    .wrapper {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
     }
 
     nav {
       > ul {
-        display: flex;
-        gap: 1.5rem;
-        list-style-type: none;
+        @apply flex gap-6 list-none;
 
         .is-active {
-          font-weight: bold;
+          @apply font-bold;
         }
       }
     }
 
     .mobile-menu {
-      flex-basis: 100%;
-      padding: 2rem 0;
+      @apply basis-full py-8;
 
       > ul {
-        flex-direction: column;
+        @apply flex-col;
 
         ul {
-          position: relative;
-          margin-top: 1rem;
+          @apply relative mt-4;
         }
       }
 
       a,
       button {
-        display: block;
-        width: 100%;
-        padding: 0.5rem 0;
+        @apply block w-full py-2;
       }
     }
 
     .has-dropdown {
       position: relative;
 
+      @apply relative;
+
       > button {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0;
-        margin-top: -1px;
-        border: none;
-        color: var(--action-color);
-        text-decoration: underline;
-        @include size-16;
+        @apply flex items-center gap-2 p-0 mt-[-1px] border-0  underline leading-6;
 
         &::after {
           content: "";
-          width: 0.75rem;
-          height: 0.75em;
-          margin-top: -0.25rem;
-          border-style: solid;
           border-width: 0.2em 0.2em 0 0;
-          transform: rotate(135deg);
+
+          @apply w-3 h-3 mt-[-0.25rem] border-solid rotate-[135deg] transform;
         }
 
         &.show {
           &::after {
-            margin-top: 0.25rem;
-            transform: rotate(-45deg);
+            @apply rotate-[-45deg] mt-1;
           }
 
           ~ ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background-color: #fff;
+            @apply flex flex-col gap-4 bg-white ml-0;
           }
         }
       }
 
       ul {
-        display: none;
-        position: absolute;
-        z-index: 100;
-        min-width: 200px;
-        top: 125%;
-        right: 0;
-        bottom: auto;
-        left: 0;
-        padding: 1rem;
-        background-color: var(--neutral-background);
-        border: 2px solid black;
-        @include elevation-300;
-        @include radius-small;
+        @apply hidden absolute z-50 min-w-[200px] top-[125%] right-0 bottom-auto left-0 p-4 bg-white border-black border-2 shadow-lg rounded-sm;
       }
     }
   }
