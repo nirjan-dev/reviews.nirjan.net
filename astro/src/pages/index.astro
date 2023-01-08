@@ -33,7 +33,7 @@ const allPostData = await getRecentPosts();
               <a href={`/blog/${post.slug.current}`}>
                 <h3 class="text-black flex justify-start items-center">
                   {post.title}{" "}
-                  <span class="uppercase border-2 ml-2 border-gray-300 text-gray-600 rounded-3xl text-xs px-3 py-1">
+                  <span class="whitespace-nowrap uppercase border-2 ml-2 border-gray-300 text-gray-600 rounded-3xl lg:text-sm text-xs px-3 py-1">
                     {post.type}
                   </span>
                 </h3>
