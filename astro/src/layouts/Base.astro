@@ -1,7 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
-
+import { GoogleAnalytics } from "astro-analytics";
 export interface Props {
   seo?: BaseHeadProps;
 }
@@ -20,5 +20,17 @@ const { seo } = Astro.props;
       <slot />
     </main>
     <slot name="footer" />
+    <GoogleAnalytics id="G-6JVM0LQC78" />
+    <!-- Panelbear -->
+    <script async src="https://cdn.panelbear.com/analytics.js?site=7GmT3xzn8k8"
+    ></script>
+    <script>
+      window.panelbear =
+        window.panelbear ||
+        function () {
+          (window.panelbear.q = window.panelbear.q || []).push(arguments);
+        };
+      panelbear("config", { site: "7GmT3xzn8k8" });
+    </script>
   </body>
 </html>

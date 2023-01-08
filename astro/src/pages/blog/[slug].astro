@@ -29,7 +29,7 @@ const { post } = Astro.props;
 
 const seo = {
   title: post.title,
-  description: post.description,
+  description: post.excerpt,
   image: getSanityImageURL(post.mainImage).width(1200).url(),
 };
 
@@ -45,7 +45,7 @@ if (post.type == "music") type = "MusicAlbum";
 
 const articleSchemaInfo = {
   title: post.title,
-  description: post.description,
+  description: post.excerpt,
   image: getSanityImageURL(post.mainImage).width(1200).url(),
   date: post.publishedAt,
   keywords: [...categories, type],
