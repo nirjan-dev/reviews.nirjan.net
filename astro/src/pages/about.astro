@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Page.astro";
 import Container from "../components/Container.astro";
+import { Schema } from "astro-seo-schema";
 
 const seo = {
   title: "About Me | Nirjan's Reviews",
@@ -10,6 +11,21 @@ const seo = {
 ---
 
 <Layout seo={seo}>
+  <Schema
+    item={{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Nirjan Khadka",
+
+      url: "https://reviews.nirjan.net/about",
+      sameAs: [
+        "https://app.thestorygraph.com/profile/nk13",
+        "https://letterboxd.com/nk13_codes",
+        "https://musicboard.app/nk13/",
+        "https://www.instagram.com/nirjan13/",
+      ],
+    }}
+  />
   <Container>
     <h1 class="text-black lg:text-9xl mb-4 lg:mb-11 mt-10">About Me</h1>
 

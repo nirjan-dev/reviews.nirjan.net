@@ -1,21 +1,51 @@
 ---
-import Layout from '../layouts/Page.astro'
-import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
-import ArticleSchema from '../components/ArticleSchema.astro';
+import Layout from "../layouts/Page.astro";
+import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
+
+import { Schema } from "astro-seo-schema";
 
 export interface Props {
-	seo?: BaseHeadProps;
+  seo?: BaseHeadProps;
+  articleShemaInfo: any;
 }
 
-const { seo } = Astro.props as Props;
+const { seo, articleShemaInfo } = Astro.props as Props;
 ---
 
 <Layout seo={seo}>
   <Fragment>
-      <ArticleSchema {...seo}  />
-      <script src="../components/CodeBlock/code-block.ts"></script>
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: articleShemaInfo.title,
+        datePublished: articleShemaInfo.date,
+        author: {
+          "@type": "Person",
+          name: "Nirjan Khadka",
+          url: "https://reviews.nirjan.net/about",
+        },
+        keywords: articleShemaInfo.keywords,
+      }}
+    />
+
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "Review",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: articleShemaInfo.rating,
+          bestRating: "5",
+          worstRating: "0",
+        },
+        itemReviewed: {
+          "@type": articleShemaInfo.type,
+          name: articleShemaInfo.title,
+        },
+      }}
+    />
+    <script src="../components/CodeBlock/code-block.ts"></script>
   </Fragment>
   <slot />
-
 </Layout>
-
