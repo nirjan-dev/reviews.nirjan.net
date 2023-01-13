@@ -16,7 +16,6 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/code-input": "^3.0.1",
     "@sanity/ui": "^1",
     "@sanity/vision": "^3.2.3",
     "prop-types": "^15.7",
