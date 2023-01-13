@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "69oav2ia",
+    "dataset": "production"
+  },
+  "project": {
+    "name": "Nirjan's Reviews"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/code-input"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}
