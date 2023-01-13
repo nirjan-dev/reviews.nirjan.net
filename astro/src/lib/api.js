@@ -25,7 +25,7 @@ export async function getAllBooksPosts() {
 }
 
 export async function getRecentPosts() {
-  const query = `*[_type == 'post']{"categoryData": categories[]->{slug, title},author -> {name}, ...} | order(publishedAt desc) [0...3]`;
+  const query = `*[_type == 'post']{"categoryData": categories[]->{slug, title},author -> {name}, ...} | order(publishedAt desc) [0...5]`;
   const data = await useSanityClient().fetch(query);
   return data;
 }

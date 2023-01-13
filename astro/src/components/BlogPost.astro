@@ -15,11 +15,11 @@ const { post } = Astro.props;
   <article class="post-content__article">
     {
       post.categoryData && (
-        <ul class="mb-4">
+        <ul class="mb-4 flex">
           {post.categoryData.map((category) => (
             <li>
               <a
-                class="uppercase border-2  border-gray-300 text-gray-600 rounded-3xl text-xs px-3 py-1"
+                class="uppercase border-2 mr-2  border-gray-300 text-gray-600 rounded-3xl text-xs px-3 py-1"
                 href={`/blog/category/${category.slug.current}`}
               >
                 {category.title}
