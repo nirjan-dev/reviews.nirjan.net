@@ -40,6 +40,8 @@ const articleSchemaInfo = {
   keywords: [...categories, type],
   rating: post.rating,
   type: type,
+  pros: post.pros?.map((pro) => pro.title),
+  cons: post.cons?.map((con) => con.title),
 };
 ---
 

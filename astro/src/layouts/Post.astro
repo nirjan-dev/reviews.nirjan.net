@@ -10,6 +10,34 @@ export interface Props {
 }
 
 const { seo, articleShemaInfo } = Astro.props as Props;
+const positiveNotes = articleShemaInfo.pros.map((pro, index) => {
+  return {
+    "@type": "ListItem",
+    position: index + 1,
+    name: pro,
+  };
+});
+
+const negativeNotes = articleShemaInfo.cons.map((con, index) => {
+  return {
+    "@type": "ListItem",
+    position: index + 1,
+    name: con,
+  };
+});
+
+const titleWithoutReviewOrType = articleShemaInfo.title
+  .replace(articleShemaInfo.type, "")
+  .replace("Review", "")
+  .replace("Movie", "")
+  .replace("TV", "")
+  .replace("Series", "")
+  .replace("Show", "")
+  .replace("Season", "")
+  .replace("Episode", "")
+  .replace("Book", "")
+  .replace("Game", "")
+  .trim();
 ---
 
 <Layout seo={seo}>
@@ -41,8 +69,10 @@ const { seo, articleShemaInfo } = Astro.props as Props;
         },
         itemReviewed: {
           "@type": articleShemaInfo.type,
-          name: articleShemaInfo.title,
+          name: titleWithoutReviewOrType,
         },
+        positiveNotes: positiveNotes,
+        negativeNotes: negativeNotes,
       }}
     />
   </Fragment>

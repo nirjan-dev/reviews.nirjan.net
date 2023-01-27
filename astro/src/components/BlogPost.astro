@@ -8,6 +8,20 @@ export interface Props {
 }
 
 const { post } = Astro.props;
+
+const titleWithoutReviewOrType = post.title
+  .replace(post.type, "")
+  .replace("Review", "")
+  .replace("Movie", "")
+  .replace("TV", "")
+  .replace("Series", "")
+  .replace("Show", "")
+  .replace("Season", "")
+  .replace("Episode", "")
+  .replace("Book", "")
+  .replace("Game", "")
+  .trim();
+
 // const blogPostBody = await convertBlockContentToMarkdown(post.bodyRaw);
 ---
 
@@ -46,7 +60,19 @@ const { post } = Astro.props;
     </time>
 
     <div class="max-w-4xl lg:text-xl my-6 post">
+      <p>{post.excerpt}</p>
+
       <SanityPortableText portableText={post.body} />
+
+      <h2>Good things about {titleWithoutReviewOrType}</h2>
+      <ul>
+        {post.pros?.map((item) => <li>{item.title}</li>)}
+      </ul>
+
+      <h2>Bad things about {titleWithoutReviewOrType}</h2>
+      <ul>
+        {post.cons?.map((item) => <li>{item.title}</li>)}
+      </ul>
 
       <p class="text-black font-bold text-2xl">Rating: {post.rating} / 5</p>
     </div>
@@ -72,6 +98,12 @@ const { post } = Astro.props;
     .post {
       p {
         margin: 2rem 0;
+      }
+
+      ul {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        list-style: disc;
       }
     }
   }

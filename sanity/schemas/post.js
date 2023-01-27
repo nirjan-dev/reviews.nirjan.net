@@ -94,6 +94,19 @@ export default {
         ),
     },
     {
+      name: "pros",
+      title: "Pros",
+      type: "array",
+      of: [{ type: "reference", to: { type: "contentElement" } }],
+    },
+
+    {
+      name: "cons",
+      title: "Cons",
+      type: "array",
+      of: [{ type: "reference", to: { type: "contentElement" } }],
+    },
+    {
       name: "body",
       title: "Body",
       type: "blockContent",
