@@ -32,5 +32,19 @@ const { seo } = Astro.props;
         };
       panelbear("config", { site: "7GmT3xzn8k8" });
     </script>
+
+    <!-- Cronitor -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+      window.cronitor =
+        window.cronitor ||
+        function () {
+          (window.cronitor.q = window.cronitor.q || []).push(arguments);
+        };
+      cronitor("config", {
+        clientKey: "027cd65db38564e087ef1618c868d70c",
+        debug: false,
+      });
+    </script>
   </body>
 </html>
